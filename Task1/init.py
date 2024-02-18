@@ -1,8 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-import community
-
 
 
 def make_dubgraph():

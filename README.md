@@ -1,7 +1,63 @@
-# README
+# Folder Structure
+
+```
+.
+├── Bonus
+│   ├── bonus_GNN.py
+│   ├── bonus_node2vec.py
+│   ├── GNN.png
+│   ├── GNN.py
+│   ├── GNN.txt
+│   ├── node2vec_threshold.png
+│   ├── report_bonustask.pdf
+│   ├── th_analyzer.py
+│   └── th.txt
+├── DataSet
+│   ├── cite.txt
+│   ├── cit-HepPh-dates.txt
+│   ├── Cit-HepPh.txt
+│   └── dates.txt
+├── README.md
+├── Task1
+│   ├── animation.py
+│   ├── graph_plot10.png
+│   ├── graph_plot11.png
+│   ├── graph_plot1.png
+│   ├── graph_plot2.png
+│   ├── graph_plot3.png
+│   ├── graph_plot4.png
+│   ├── graph_plot5.png
+│   ├── graph_plot6.png
+│   ├── graph_plot7.png
+│   ├── graph_plot8.png
+│   ├── graph_plot9.png
+│   ├── init.py
+│   ├── o.txt
+│   ├── plot.py
+│   ├── README.md
+│   ├── report_task1.pdf
+│   └── table.py
+└── Task2
+    ├── animation.py
+    ├── Centrality.png
+    ├── Louvain.png
+    ├── Phase1.png
+    ├── Phase2.png
+    ├── Phase3.png
+    ├── Phase4.png
+    ├── Phase5.png
+    ├── README.md
+    ├── report_task2.pdf
+    ├── task2_C.py
+    └── task2_L.py
+
+```
 
 
-## Taks1
+
+
+
+# Taks1
 
 ## Dependencies
 - NetworkX
@@ -21,11 +77,159 @@
 
 ## Commands to run 
 ### For graph changes over time 
-This is generated using o.txt data
 
 ```bash
 python3 animation.py 
+```
+This is generated using o.txt data
 
-### For generating o.txt
-```bash 
+
+### for running and generating o.txt
+```bash
 python3 init.py
+```
+### For analysis, several plots were made using values of `o.txt` in `plot.py` which are added in `report_task1.pdf`
+
+## Code_Explanation
+
+- Import the necessary libraries: networkx, matplotlib.pyplot, tqdm, and community.
+
+- Define a function named make_dubgraph.
+
+- Initialize lists (parts, farts) and an empty list (filtered_nodes).
+
+- Initialize variables (fig_cnt and g_cnt) to control figure and graph counts.
+
+- Iterate through values in farts using tqdm for a progress bar with the description "cycles iterated".
+
+- Filter nodes based on their 'year' attribute and create a subgraph from the main graph G using filtered nodes.
+
+- Create a figure and axis for plotting.
+
+- Calculate the number of nodes and edges in the subgraph.
+
+- Calculate the average degree, density, clustering coefficient, assortativity coefficient, and the number of strongly connected components in the subgraph.
+
+- Calculate and print PageRank Centrality for the top 5 nodes in the subgraph.
+
+- Calculate and print Katz Centrality for the top 5 nodes in the subgraph.
+
+- Define node size, edge color, and node colors for visualization.
+
+- Draw the subgraph using the Spring layout and save the plot as a PNG file.
+
+- Increment figure and graph counts, and reset figure count.
+
+- Initialize main and undirected graphs (G and G_u).
+
+- Read edge data from a file (Cit-HepPh.txt) and construct the main and undirected graphs.
+
+- Read year data from another file (cit-HepPh-dates.txt) and assign year attributes to nodes in the main graph.
+
+- Call the make_dubgraph function to execute the visualization and analysis.
+
+
+# Taks2
+
+## Dependencies
+- NetworkX
+- Matplotlib
+- tqdm
+- datetime
+- community
+
+## Directory Structure
+- **Task2:**
+  - **task2_L.py:** The  code for the task2, responsible for communit building using Louvain Method.
+  - **task2_C.py:** The  code for the task2, responsible for communit building using Edge-Centrality Method.
+  - **Phase/{1-5}:** Contains 5 images generated using `task2_L.py` showcasing the evolution of the graph and temporal community buliding.
+  - **animation.py:** A script that, when run, displays an animation of the graph evolution using the images.
+  - **Centerality.png:** Image generated using `task2_C.py` for showcasing community building using Edge-Centraliy
+  - **report_task2.pdf:** The detailed report on Task 2, including insights, analyses, and visualizations.
+
+
+## Commands to run 
+### For generating clusters using Louvain Method
+
+```bash
+python3 task2_L.py 
+```
+
+
+
+### For generating clusters using Edge-Centrality Method
+```bash
+python3 task2_C.py
+```
+### For analyzing temporal community detection that is how community grew with time using Louvain method 
+```bash 
+python3 animation.py
+```
+
+## Code_Explanation
+
+- The target date function in both script just filter out the nodes that were added to the date given in the network.
+- The init graph makes the whole network graph using the complete dataset
+- Then subgrahs are generated using filtered nodes and the main graph
+- In L script the clustering is done using inbuild community library of the python which uses Louvain Method
+- In C script, to cluster the edge centerality is calculated and then the edge with highest value is removed causing clusters 
+to disintegrate, this is done a number of times
+
+## For Analysis
+
+Regarding two other questions a detailes report pdf is attached in the `task2` folder 
+
+# Bonus
+
+## Dependencies
+- torch
+- torch_geometric
+- networkx
+- datetime
+- matplotlib
+- tqdm
+- node2vec
+- numpy
+- logging
+
+## Directory Structure
+- **Bonus:**
+  - **bonus_GNN.py:** The  code for Link prediction using Graph Neural Networks.
+  - **bonus_node2vec.py:** The  code for Link prediction using node2vec.
+  - **GNN.png:** Image containing plot of accuracy vs threshold for GNN.
+  - **bonus_node2vec.png:** Image containing plot of accuracy vs threshold for node2vec.
+  - **report_bonustask.pdf:** The detailed report on bonus task, including insights, analyses, and visualizations.
+
+
+## Commands to run 
+### For link prediction using GNN
+
+```bash
+python3 bonus_GNN.py > GNN.txt
+```
+
+
+
+### For link prediction using node2vec
+```bash
+python3 bonus_node2vec.py > th.txt 
+```
+
+
+## Code_Explanation
+
+- The target date function in both script just filter out the nodes that were added to the date given in the network.
+- The init graph makes the whole network graph using the complete dataset
+
+- in Node2vec script  The node2vec function is called from python library and embeddings are generated, then for various values of threshold the the similarity value of edges is converted to binary and those with value 1 are predicted and with 0 are predicted to be not there 
+- Then the accuracy is calculated for each value using the Actual Test graph present
+
+
+- In GNN  model class is made using pytorch library , the model is then trained using training graph and model is refined over and over again by iterating again and again 
+
+- Then the model is evauated on test graph and accuracy is calculated using the actual graph made at T+t time 
+
+- This accuracy is similarly calculated for different values of threshold.
+
+
+
