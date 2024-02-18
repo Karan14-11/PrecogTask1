@@ -145,5 +145,5 @@ nx.draw_networkx_edges(G_removed_edges, pos_removed_edges)
 
 plt.title('Graph after Removing High Betweenness Edges - Connected Components Colored')
 plt.show()
-plt.savefig('Centrality.png', format='png', bbox_inches='tight')
+# plt.savefig('Centrality.png', format='png', bbox_inches='tight')
 

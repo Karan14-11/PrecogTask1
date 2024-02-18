@@ -17,7 +17,9 @@
 │   ├── cit-HepPh-dates.txt
 │   ├── Cit-HepPh.txt
 │   └── dates.txt
+├── Paper_Reading_Report.pdf
 ├── README.md
+├── Report.pdf
 ├── Task1
 │   ├── animation.py
 │   ├── graph_plot10.png

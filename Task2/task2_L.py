@@ -7,7 +7,7 @@ import datetime
 #constants
 date_path = "../DataSet/cit-HepPh-dates.txt"
 cite_path = "../DataSet/Cit-HepPh.txt"
-date_need = datetime.datetime.strptime("1995-01-01",'%Y-%m-%d').date
+date_need = datetime.datetime.strptime("1993-01-01",'%Y-%m-%d').date
 year_cy = {}
 
 year_cy["92"]=1
@@ -124,7 +124,7 @@ fig, ax = plt.subplots(figsize=(30, 20))
 
 nx.draw(subgraph_copy, pos=pos2, node_size=node_size, node_color=node_colors, edge_color=(0, 0, 0),width = 1,ax=ax)
 
-plt.savefig('Louvain.png', format='png', bbox_inches='tight')
+# plt.savefig('Louvain.png', format='png', bbox_inches='tight')
 plt.show()
 
 
